@@ -1,0 +1,47 @@
+{
+    "short_name": "小猴子",
+    "name": "猴子爬树",
+    "icons": [
+        {
+            "src": "img/icon-32.png",
+            "type": "image/png",
+            "sizes": "32x32"
+        },
+        {
+            "src": "img/icon-72.png",
+            "type": "image/png",
+            "sizes": "72x72"
+        },
+        {
+            "src": "img/icon-128.png",
+            "type": "image/png",
+            "sizes": "128x128"
+        },
+        {
+            "src": "img/icon-144.png",
+            "type": "image/png",
+            "sizes": "144x144"
+        },
+        {
+            "src": "img/icon-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "img/icon-256.png",
+            "type": "image/png",
+            "sizes": "256x256"
+        },
+        {
+            "src": "img/icon-512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "index.html",
+    "background_color" : "#00f",
+    "display" : "standalone",
+    "orientation" : "portrait-primary",
+    "theme_color" : "#95d1f8",
+    "description" : "一个猴子爬树的小游戏"
+}
