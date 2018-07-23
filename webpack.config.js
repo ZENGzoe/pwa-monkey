@@ -1,4 +1,6 @@
 const path = require('path'),
+      webpack = require('webpack'),
+      underscore = require('underscore'),
       HtmlWebpackPlugin = require('html-webpack-plugin'),       //打包html
       ExtractTextWebpckPlugin = require('extract-text-webpack-plugin'),        //将css拆分出来
       CopyWebpackPlugin = require('copy-webpack-plugin');       //拷贝资源
@@ -10,6 +12,7 @@ module.exports = {
         path : path.resolve(__dirname , 'dist'),        //输出文件的目标路径
         filename : 'js/[name].js'
     },
+    // vendor : [underscore],
     module : {  //模块相关配置
         rules : [       //解析规则，根据文件后缀提供一个loader
             {
@@ -27,7 +30,8 @@ module.exports = {
                 use : ExtractTextWebpckPlugin.extract({
                     use : [
                         'css-loader?-url&-reduceTransforms',
-                        'sass-loader'
+                        'sass-loader',
+                        'postcss-loader'
                     ]
                 })
             },
@@ -61,21 +65,24 @@ module.exports = {
                 to : 'img',
                 ignore : ['.gitkeep']
             },
-            // {
-            //     from : path.resolve(__dirname , 'src/js/service-worker.js'),
-            //     to : path.resolve(__dirname,'dist')
-            // },
-            // {
-            //     from : path.resolve(__dirname , 'src/manifest.json'),
-            //     to : path.resolve(__dirname ,  'dist')
-            // }
+            {
+                from : path.resolve(__dirname , 'src/js/service-worker.js'),
+                to : path.resolve(__dirname,'dist')
+            },
+            {
+                from : path.resolve(__dirname , 'src/manifest.json'),
+                to : path.resolve(__dirname ,  'dist')
+            }
         ]),
         new HtmlWebpackPlugin({ // 将模版的头部和尾部添加css和js模版，dist目录发布到服务器上，项目包。
             file : 'index.html', 
-            template : 'src/index.html'
+            template : 'src/index.html',
+            hash:true
         }),
+        new webpack.ProvidePlugin({
+            $ : '../lib/zepto.js',
+            _ : 'underscore'
+        })
     ],
-    // devServer : {
-    //     port : '8081'
-    // }
+    devtool: 'source-map'
 }
