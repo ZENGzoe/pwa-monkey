@@ -8,7 +8,7 @@ require('./play.js');
 const vConsole = new VConsole();
 
 var hot = {
-    hotUrl : 'https://wq.jd.com/bases/searchdropdown/getdropdown?key=q',
+    hotUrl : 'https://api.douban.com/v2/book/search?fields=id,title,image,author,publisher,price&count=10&callback=x',
     init : function(){
         const _this = this;
         
@@ -22,14 +22,15 @@ var hot = {
             $('.hot').hide();
         })
     },
-    getData : function(){
+    getData : function(url){
+        
         const _this = this;
-
+              
         return new Promise((resolve , reject) => {
             $.ajax({
-                url : _this.hotUrl,
+                url : url,
                 type : 'get',
-                dataType : 'jsonp',
+                // dataType : 'jsonp',
                 success : function(data){
                     // data = JSON.parse(data);
                     if(!data || data.length == 0) return null;
@@ -41,25 +42,28 @@ var hot = {
                     reject(err)
                 }
             })
+            
         })
         
     },
     renderHot : function(data){
         let _html = '';
-
-        data.map((item,idx) => {
-            if(item.keyword && item.keyword.length > 0){
-                _html += `<p>${item.keyword}</p>`
+        const {books} = data;
+        
+        if(!books || books.length == 0) return null;
+        
+        books.map((item,idx) => {
+            if(item.title && item.title.length > 0){
+                _html += `<p>${idx+1}.${item.title}</p>`
             }
         })
 
         $('.hot .ct').html(_html);
         $('.hot').show();
     },
-    getApiDataFromCache : function(){
-        const _this = this;
+    getApiDataFromCache : function(url){
         if('caches' in window){
-            return caches.match(_this.hotUrl).then(cache => {
+            return caches.match(url).then(cache => {
                 console.log('get data from cache : ',cache)
                 if(!cache){
                     return
@@ -71,10 +75,13 @@ var hot = {
         }
     },
     queryHot : function(){
-        const _this = this,
-              remotePromise = _this.getData();
+        const val = $('.searchinput').val();
+        this.hotUrl = `${this.hotUrl}&q=${val}`;
+
+        var _this = this,
+              remotePromise = _this.getData(_this.hotUrl);
         
-        let cacheData ;
+        let cacheData ; 
 
         _this.getApiDataFromCache(_this.hotUrl).then(data => {
             console.log('cacheData : ' ,data);
@@ -92,7 +99,7 @@ var hot = {
         
     }
 }
-hot.init();
+// hot.init();
 
 //注册service worker 
 if('serviceWorker' in navigator){
@@ -104,6 +111,7 @@ if('serviceWorker' in navigator){
         console.log('service worker注册失败，error:' , err)
     })
 }
+
 
 
 
