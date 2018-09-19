@@ -1,0 +1,183 @@
+.getBtn {
+  position: absolute;
+  left: 50%;
+  top: 1rem;
+  color: #fff;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  font-size: 1rem;
+  background: transparent;
+  border: none; }
+
+.hot {
+  position: fixed;
+  width: 80%;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+  font-size: 1.2rem;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+  background: white;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 10px;
+  display: none; }
+  .hot .ct {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll; }
+  .hot p {
+    text-indent: 5px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+  .hot .close {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #fff;
+    bottom: -55px;
+    color: #000;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    line-height: 50px;
+    text-align: center; }
+@charset "UTF-8";
+/**
+ * 样式主文件
+ */
+/**
+ * 常用的 mixins
+ */
+/**
+ * Mixins
+ */
+/**
+ * 引用图片，自动获取图片的宽高
+ * @param  {string} $name [图片相对于img目录的位置]
+ */
+/**
+   * 引用图片，自动获取图片的宽高
+   * @param  {string} $url [图片的路径]
+   */
+/**
+   * 引用图片，自动获取图片的 background-size
+   * @param  {string} $url [图片的路径]
+   */
+/**
+   * 文本截断 - text ellipsis
+   * @param  {integer} $num [文本截断的行数]
+   */
+/**
+   * 清除浮动
+   */
+/**
+   * 隐藏滚动条
+   */
+/**
+   * 1像素边框
+   * @param  {string} $position [边框位置，取值：top, bottom, left, right, full]
+   * @param  {string} $borderColor [边框颜色]
+   * @param  {number} $raidus [圆角]
+   *
+   * 例子：
+   *   @include border(top, #ddd);
+   *   @include border(full, #ddd, 2px);
+   */
+/**
+  * 页面的基础样式，包括样式重置
+  */
+/**
+ * 样式重置
+ */
+* {
+  -webkit-tap-highlight-color: transparent;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline; }
+
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline; }
+
+img {
+  border: 0 none;
+  vertical-align: top; }
+
+i, em {
+  font-style: normal; }
+
+ol, ul {
+  list-style: none; }
+
+input, select, button, h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-family: inherit; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+a {
+  text-decoration: none;
+  color: #666; }
+
+body {
+  margin: 0 auto;
+  min-width: 320px;
+  max-width: 768px;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  font-family: -apple-system, Helvetica, "Microsoft YaHei", Arial, sans-serif;
+  line-height: 1.5;
+  color: #666;
+  text-size-adjust: 100% !important;
+  user-select: none; }
+
+input[type="text"], textarea {
+  appearance: none; }
+
+html {
+  width: 100%;
+  height: 100%; }
+
+/**
+   * 状态类
+   */
+.hide {
+  display: none !important; }
+
+/**
+  * 活动的样式
+  */
+/**
+ * Main Page
+ */
+.main {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: #282b56;
+  justify-content: center;
+  align-items: center; }
+  .main .info {
+    text-align: center; }
+    .main .info .name {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 30px;
+      background-color: #fff;
+      border-radius: 100%;
+      font-size: 60px;
+      line-height: 200px;
+      text-transform: uppercase; }
+
+/*# sourceMappingURL=main.css.map*/

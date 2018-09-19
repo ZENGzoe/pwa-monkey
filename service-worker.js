@@ -34,10 +34,9 @@ self.addEventListener('install' , e => {
 const apiCacheName = 'monkey-api-cache';
 self.addEventListener('fetch' , e => {
     const cacheRequestUrls = [
-        'getdropdown',
-        '/book/'
+        'https://wq.jd.com/bases/searchdropdown/getdropdown?key=q'
     ];
-    // console.log('正在请求：' + e.request.url);
+    console.log('正在请求：' + e.request.url);
 
     const needCache = cacheRequestUrls.some(url => {
         return e.request.url.indexOf(url) > -1;
@@ -46,6 +45,7 @@ self.addEventListener('fetch' , e => {
     if(needCache){
         caches.open(apiCacheName).then(cache => {
             return fetch(e.request).then(response => {
+                console.log('response clone',response.clone())
                 cache.put(e.request.url , response.clone());
                 return response;
             })
@@ -54,6 +54,7 @@ self.addEventListener('fetch' , e => {
         e.respondWith(
             caches.match(e.request)
             .then(cache => {
+                console.log('cache match e.request',cache)
                 return cache || fetch(e.request)
             })
             .catch(err => {
