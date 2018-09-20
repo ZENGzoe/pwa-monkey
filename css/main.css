@@ -1,13 +1,27 @@
-.getBtn {
+.box {
   position: absolute;
+  width: 70%;
+  height: 2rem;
+  top: 0.5rem;
   left: 50%;
-  top: 1rem;
-  color: #fff;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
-  font-size: 1rem;
-  background: transparent;
-  border: none; }
+  display: none; }
+  .box input {
+    width: 70%;
+    height: 2rem;
+    padding: 0 5px;
+    float: left;
+    font-size: 1rem;
+    border: none;
+    background: #ccc; }
+
+.getBtn {
+  color: #000;
+  height: 2rem;
+  width: 20%;
+  float: right;
+  background: #95d1f8; }
 
 .hot {
   position: fixed;
