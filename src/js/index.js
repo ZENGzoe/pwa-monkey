@@ -103,7 +103,7 @@ var hot = {
 
 //注册service worker 
 if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('./service-worker.js?' + Math.random().toString(36).substr(2) , {scope : './'})
+    navigator.serviceWorker.register('./service-worker.js' , {scope : './'})
     .then(() => {
         console.log('service worker注册成功')
     })
